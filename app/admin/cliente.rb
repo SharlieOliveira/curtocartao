@@ -1,5 +1,6 @@
 ActiveAdmin.register Cliente do
-  config.filters = false
+
+  filter :nome
 
   index do
     column :nome
