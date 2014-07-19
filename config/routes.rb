@@ -42,6 +42,8 @@ Curtocartao::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       get "clientes" => "clientes#index"
+      get "produtos" => "produtos#index"
+      match 'consumo/:id/confirma' => 'consumo#confirma', :as => :consumo_confirma
     end
   end
    # Th
