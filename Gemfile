@@ -2,16 +2,10 @@ source 'http://rubygems.org'
 
 gem 'rails', '~>3.2'
 gem 'activeadmin', github: 'gregbell/active_admin'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-group :production, :staging do
-  gem "pg"
-end
+gem "pg",                     '0.17.1'
+gem 'rack-canonical-host',    '0.1.0'
 
 group :development, :test do
-  gem "sqlite3"
   gem 'rspec',                '~> 3.0.0.beta'
   gem 'rspec-rails',          '~> 3.0.0.beta'
   gem 'factory_girl_rails',   '4.4.1'

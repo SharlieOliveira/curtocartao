@@ -34,7 +34,7 @@ protect_from_forgery :except => :confirma_api
 
     respond_to do |format|
       if @cliente.save
-        format.html { redirect_to consumo_path, :notice => 'Cliente was successfully created.' }
+        format.html { redirect_to consumo_path, :notice => 'Cliente criado com sucesso.' }
         format.json { render :json => @cliente, :status => :created, :location => @cliente }
       else
         format.html { render :action => "new" }
