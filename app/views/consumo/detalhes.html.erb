@@ -1,49 +1,46 @@
 <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <span>
-            <span><%= @cliente.nome %></span>, seu saldo é de <span id="saldo-f"><%= number_to_currency(@cliente.saldo) %></span>.
-        </span>
-        <%= link_to 'Cancelar', consumo_path, 'data-icon' => 'arrow-l', 'role' => 'button', 'class' => 'btn'%>
-        <button class="btn btn-primary" onclick="document.Confirmar.submit();">Enviar</button>
-        <span id="total-compra">Total: R$0,00</span>
-        <%= render partial: 'consumo/botoes_de_recarga' %>
-    </div>
+  <div class="navbar-inner">
+    <span>
+      <span><%= @cliente.nome %></span>, seu saldo é de <span id="saldo-f"><%= number_to_currency(@cliente.saldo) %></span>.
+    </span>
+    <%= link_to 'Cancelar', consumo_path, 'data-icon' => 'arrow-l', 'role' => 'button', 'class' => 'btn'%>
+    <button class="btn btn-primary" onclick="document.Confirmar.submit();">Enviar</button>
+    <span id="total-compra">Total: R$0,00</span>
+    <%= render partial: 'consumo/botoes_de_recarga' %>
+  </div>
 </div>
 
 <%= form_tag(confirma_consumo_path(@cliente), :id => 'Confirmar', :name => 'Confirmar') do %>
-<div class="row-fluid" style="margin-top: 100px;">
-  <% @produtos_cols.each do |prods| %>
-    <div class="span6">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="span4"> Produto </th>
-            <th class="span3"> Quantidade </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% prods.each do |produto|%>
-            <% if not produto.nil? %>
+  <div class="row-fluid" style="margin-top: 100px;">
+    <% @produtos_cols.each do |prods| %>
+      <div class="span6">
+        <table class="table">
+          <thead>
             <tr>
-              <td> <%= produto.nome%>  <%= number_to_currency(produto.preco) %>
-              </td>
-              <td>
-                <div class="input-prepend input-append">
-                  <span class="add-on clickable"  style="cursor:pointer;" onClick="javascript:decProd(event, '<%= produto.id %>');"> - </span>
-                  <input class="span4" type="tel"
-                  id="prodcount-<%=produto.id%>" name="consumo[<%=produto.id%>]" value="0"
-                  style="-webkit-appearance: none; margin: 0;">
-                  <span class="add-on clickable"  style="cursor:pointer;" onClick="javascript:incProd(event, '<%= produto.id %>');">+</span>
-                </div>
-              </td>
+              <th class="span4"> Produto </th>
+              <th class="span3"> Quantidade </th>
             </tr>
+          </thead>
+          <tbody>
+            <% prods.each do |produto|%>
+              <% if not produto.nil? %>
+              <tr>
+                <td><%= produto.nome%> <%= number_to_currency(produto.preco) %></td>
+                <td>
+                  <div class="input-prepend input-append">
+                    <span class="add-on clickable"  style="cursor:pointer;" onClick="javascript:decProd(event, '<%= produto.id %>');"> - </span>
+                    <input class="span4" type="tel" id="prodcount-<%=produto.id%>" name="consumo[<%=produto.id%>]" value="0" style="-webkit-appearance: none; margin: 0;">
+                    <span class="add-on clickable"  style="cursor:pointer;" onClick="javascript:incProd(event, '<%= produto.id %>');">+</span>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
             <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  <% end %>
-</div>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <div id="curto-app"class="hidden">

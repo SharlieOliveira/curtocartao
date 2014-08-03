@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class ConsumoController < ApplicationController
-protect_from_forgery :except => :confirma_api
+	protect_from_forgery :except => :confirma_api
 
 	layout "mobile"
 
@@ -92,13 +92,13 @@ protect_from_forgery :except => :confirma_api
 		@cliente = cliente
 		@valor = valor
 
-        respond_to do |format|
-          format.json {
-            render :json => {
-                :saldo => @cliente.saldo
-              }
-          }
-        end
+    respond_to do |format|
+      format.json {
+        render :json => {
+          :saldo => @cliente.saldo
+        }
+      }
+    end
 	end
 
 end
