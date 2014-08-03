@@ -5,7 +5,6 @@
   <%= submit_tag("Gerar relatório por hora") %>
 <% end %>
 
-
 <h1>Consumos do dia <%= @data %></h1>
 
 <table>
@@ -15,17 +14,17 @@
     <th>Valor</th>
     <th></th>
   </tr>
-<% soma_dia = 0 %>
-<% @resumo.each do |consumo| %>
-	<% produto = Produto.find(consumo.produto_id) %>
-	<% soma_dia += produto.preco * consumo.quantidade unless produto.preco < 0 %>
-  <tr>
-    <td><%= produto.nome %></td>
-    <td style="text-align: center;"><%= consumo.quantidade %></td>
-    <td>R$ <%= produto.preco * consumo.quantidade %></td>
-    <td></td>
-  </tr>
-<% end %>
+  <% soma_dia = 0 %>
+  <% @resumo.each do |consumo| %>
+  	<% produto = Produto.find(consumo.produto_id) %>
+  	<% soma_dia += produto.preco * consumo.quantidade unless produto.preco < 0 %>
+    <tr>
+      <td><%= produto.nome %></td>
+      <td style="text-align: center;"><%= consumo.quantidade %></td>
+      <td>R$ <%= produto.preco * consumo.quantidade %></td>
+      <td></td>
+    </tr>
+  <% end %>
   <tr>
     <td> Recargas </td>
     <td style="text-align: center;"> <%= @recarga_total[:quantidade] %>  </td>
@@ -33,7 +32,36 @@
     <td> </td>
   <tr>
 </table>
-<h2>receita do dia: R$ <%= soma_dia %> </h2>
+<h2>movimentações do dia: R$ <%= soma_dia %> </h2>
+
+<h1>Consumos do avulso no dia <%= @data %></h1>
+
+<table>
+  <tr>
+    <th>Produto</th>
+    <th>Quantidade</th>
+    <th>Valor</th>
+    <th></th>
+  </tr>
+  <% soma_dia_avulso = 0 %>
+  <% @resumo_avulso.each do |consumo| %>
+    <% produto = Produto.find(consumo.produto_id) %>
+    <% soma_dia_avulso += produto.preco * consumo.quantidade unless produto.preco < 0 %>
+    <tr>
+      <td><%= produto.nome %></td>
+      <td style="text-align: center;"><%= consumo.quantidade %></td>
+      <td>R$ <%= produto.preco * consumo.quantidade %></td>
+      <td></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td> Recargas </td>
+    <td style="text-align: center;"> <%= @recarga_total[:quantidade] %>  </td>
+    <td> <%= number_to_currency(@recarga_total[:valor]) %></td>
+    <td> </td>
+  <tr>
+</table>
+<h2>receita do dia: R$ <%= (soma_dia_avulso + @recarga_total[:valor]) %> </h2>
 
 <br />
 
@@ -49,18 +77,17 @@
     <th></th>
   </tr>
 
-<% @resumo_cliente.each do |consumo| %>
-  <tr>
-    <td><%= Cliente.find(consumo.cliente_id).nome %></td>
-    <td><%= Produto.find(consumo.produto_id).nome %></td>
-    <td style="text-align: center;"><%= consumo.quantidade %></td>
-    <td></td>
-  </tr>
-<% end %>
+  <% @resumo_cliente.each do |consumo| %>
+    <tr>
+      <td><%= Cliente.find(consumo.cliente_id).nome %></td>
+      <td><%= Produto.find(consumo.produto_id).nome %></td>
+      <td style="text-align: center;"><%= consumo.quantidade %></td>
+      <td></td>
+    </tr>
+  <% end %>
 </table>
 
 <br />
-
 
 <h1>Detalhes do dia <%= @data %></h1>
 
@@ -73,15 +100,15 @@
     <th></th>
   </tr>
 
-<% @consumos.each do |consumo| %>
-  <tr>
-  	<td><%= Cliente.find(consumo.cliente_id).nome %></td>
-    <td><%= Produto.find(consumo.produto_id).nome %></td>
-    <td style="text-align: center;"><%= consumo.quantidade %></td>
-    <td><%= consumo.created_at.strftime("%H:%M") %></td>
-    <td></td>
-  </tr>
-<% end %>
+  <% @consumos.each do |consumo| %>
+    <tr>
+    	<td><%= Cliente.find(consumo.cliente_id).nome %></td>
+      <td><%= Produto.find(consumo.produto_id).nome %></td>
+      <td style="text-align: center;"><%= consumo.quantidade %></td>
+      <td><%= consumo.created_at.strftime("%H:%M") %></td>
+      <td></td>
+    </tr>
+  <% end %>
 </table>
 
 <h1>Recargas do dia <%= @data %></h1>
@@ -92,12 +119,12 @@
     <th>Hora</th>
   </tr>
 
-<% @recargas.each do |recarga| %>
-  <tr>
-    <td><%= Cliente.find(recarga.cliente_id).nome %></td>
-	<td style="text-align: center;"><%= number_to_currency(recarga.valor) %></td>
-    <td><%= recarga.created_at.strftime("%H:%M") %></td>
-  </tr>
-<% end %>
-</table?
+  <% @recargas.each do |recarga| %>
+    <tr>
+      <td><%= Cliente.find(recarga.cliente_id).nome %></td>
+  	  <td style="text-align: center;"><%= number_to_currency(recarga.valor) %></td>
+      <td><%= recarga.created_at.strftime("%H:%M") %></td>
+    </tr>
+  <% end %>
+</table>
 <br />
