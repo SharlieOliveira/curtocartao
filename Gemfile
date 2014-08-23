@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails',                  '~>3.2'
 gem "pg",                     '0.17.1'
 gem 'puma',                   '2.9.0'
+gem 'rack-timeout',           '0.0.4'
 gem 'rack-canonical-host',    '0.1.0'
 gem 'activeadmin',            github: 'gregbell/active_admin'
 
