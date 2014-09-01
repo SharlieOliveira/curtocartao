@@ -8,6 +8,7 @@ gem 'jquery-rails',           '3.1.1'
 gem 'rack-canonical-host',    '0.1.0'
 
 gem 'activeadmin',            github: 'gregbell/active_admin'
+gem 'newrelic_rpm',           '~> 3.9.3.241'
 
 group :development, :test do
   gem 'rspec',                '~> 3.0.0'
