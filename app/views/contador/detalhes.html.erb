@@ -61,7 +61,7 @@
     <td> </td>
   <tr>
 </table>
-<h2>receita do dia: R$ <%= (soma_dia_avulso + @recarga_total[:valor]) %> </h2>
+<h2>receita do dia: R$ <%= (soma_dia_avulso.to_f + @recarga_total[:valor]) %> </h2>
 
 <br />
 
