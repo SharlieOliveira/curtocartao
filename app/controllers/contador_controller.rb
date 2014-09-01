@@ -1,4 +1,7 @@
 class ContadorController < ApplicationController
+
+	before_filter :avoid_server_error, only: [:detalhes]
+
 	def index
 		@dias = Consumo.select(:data).order('data desc').map(&:data).uniq
 	end
@@ -28,5 +31,18 @@ class ContadorController < ApplicationController
     @recarga_total = {
       :valor => recargas.map{ |x| x.valor }.reduce(:+),
       :quantidade => recargas.length }
+	end
+
+
+	private
+
+	# Temporary workaround to stop server errors
+	# I don't like this, but the time right now isn't enough
+	def avoid_server_error
+		begin
+			Date.parse(params[:data])
+		rescue
+			raise ActionController::RoutingError.new("Not Found")
+		end
 	end
 end
