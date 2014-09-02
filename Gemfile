@@ -10,6 +10,7 @@ gem 'unicorn',                '4.8.3'
 
 gem 'activeadmin',            github: 'gregbell/active_admin'
 gem 'newrelic_rpm',           '~> 3.9.3.241'
+gem "oink",                   '0.10.1'
 
 group :development, :test do
   gem 'rspec',                '~> 3.0.0'
