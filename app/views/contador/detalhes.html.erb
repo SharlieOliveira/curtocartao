@@ -101,7 +101,7 @@
 
   <% @recargas.each do |recarga| %>
     <tr>
-      <td><%= Cliente.find(recarga.cliente_id).nome %></td>
+      <td><%= recarga.cliente.nome %></td>
   	  <td style="text-align: center;"><%= number_to_currency(recarga.valor) %></td>
       <td><%= recarga.created_at.strftime("%H:%M") %></td>
     </tr>

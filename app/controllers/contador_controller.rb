@@ -9,7 +9,7 @@ class ContadorController < ApplicationController
 	def detalhes
 		@data = params[:data]
 		@consumos = Consumo.da_data(@data)
-		@recargas = Recarga.da_data(@data)
+		@recargas = Recarga.da_data(@data).includes(:cliente)
 		@resumo = @consumos.resumo
 		@resumo_avulso = @consumos.resumo.do_avulso
 		@resumo_cliente = @consumos.por_cliente
