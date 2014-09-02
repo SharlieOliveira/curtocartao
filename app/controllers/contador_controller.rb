@@ -3,7 +3,8 @@ class ContadorController < ApplicationController
 	before_filter :avoid_server_error, only: [:detalhes]
 
 	def index
-		@dias = Consumo.select(:data).order('data desc').map(&:data).uniq
+		#TODO: Extract to scope and test.
+		@dias = Consumo.order('data desc').pluck("DISTINCT data")
 	end
 
 	def detalhes
