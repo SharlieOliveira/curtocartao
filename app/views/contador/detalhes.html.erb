@@ -67,26 +67,6 @@
 
 <%= link_to 'Voltar', contador_path %>
 
-<h1>Resumo por cliente</h1>
-
-<table>
-  <tr>
-  	<th>Cliente</th>
-    <th>Produto</th>
-    <th>Quantidade</th>
-    <th></th>
-  </tr>
-
-  <% @resumo_cliente.each do |consumo| %>
-    <tr>
-      <td><%= Cliente.find(consumo.cliente_id).nome %></td>
-      <td><%= Produto.find(consumo.produto_id).nome %></td>
-      <td style="text-align: center;"><%= consumo.quantidade %></td>
-      <td></td>
-    </tr>
-  <% end %>
-</table>
-
 <br />
 
 <h1>Detalhes do dia <%= @data %></h1>
