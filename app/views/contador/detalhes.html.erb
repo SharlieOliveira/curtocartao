@@ -82,8 +82,8 @@
 
   <% @consumos.each do |consumo| %>
     <tr>
-    	<td><%= Cliente.find(consumo.cliente_id).nome %></td>
-      <td><%= Produto.find(consumo.produto_id).nome %></td>
+      <td><%= consumo.cliente.nome %></td>
+      <td><%= consumo.produto.nome %></td>
       <td style="text-align: center;"><%= consumo.quantidade %></td>
       <td><%= consumo.created_at.strftime("%H:%M") %></td>
       <td></td>
