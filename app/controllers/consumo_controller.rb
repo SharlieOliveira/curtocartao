@@ -6,7 +6,7 @@ class ConsumoController < ApplicationController
 	layout "mobile"
 
 	def index
-		@clientes = Cliente.order('nome')
+		@clientes = Cliente.order('nome').all
 	end
 
 	def detalhes
