@@ -24,24 +24,15 @@ class ConsumoController < ApplicationController
 
 	def novo_cliente
 		@cliente = Cliente.new
-
-    respond_to do |format|
-      format.html
-      format.json { render :json => @cliente }
-    end
 	end
 
 	def create
     @cliente = Cliente.new(params[:cliente])
 
-    respond_to do |format|
-      if @cliente.save
-        format.html { redirect_to consumo_path, :notice => 'Cliente criado com sucesso.' }
-        format.json { render :json => @cliente, :status => :created, :location => @cliente }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @cliente.errors, :status => :unprocessable_entity }
-      end
+    if @cliente.save
+			redirect_to consumo_path, :notice => 'Cliente criado com sucesso.'
+    else
+      render :action => "novo_cliente"
     end
   end
 
