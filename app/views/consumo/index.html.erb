@@ -1,11 +1,9 @@
 <% if flash[:notice] %>
-  <div>
-    <div class="ui-bar ui-bar-e">
-      <h3 style="display:inline-block; width:92%; margin-top:5px;"  id="saldo-mesg"><%= flash[:notice] %></h3>
-    </div>
+  <div class="ui-bar ui-bar-e">
+    <h3 style="display:inline-block; width:92%; margin-top:5px;"  id="saldo-mesg"><%= flash[:notice] %></h3>
   </div>
   <script>
-    setTimeout(function() { $("#saldo-mesg").html("&nbsp;"); }, 6000);
+    setTimeout(function(){ $('.ui-bar').fadeOut(); }, 6000);
   </script>
 <% end %>
 
