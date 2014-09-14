@@ -1,9 +1,11 @@
 ActiveAdmin.register Cliente do
 
+  filter :id
   filter :nome
   filter :email
 
   index do
+    column :id
     column :nome
     column :email
     column :saldo
