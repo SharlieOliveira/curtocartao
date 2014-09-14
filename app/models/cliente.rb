@@ -5,6 +5,7 @@ class Cliente < ActiveRecord::Base
 
   # TODO: Testar unitariamente após merge do branch com rspec
   validates :nome, :email, :saldo, presence: true
+	validates :email, uniqueness: true
 
   def recarregar_cinco_reais
     recarregar(5.0)
