@@ -12,4 +12,8 @@ $(document).ready(function($){
     });
   });
 
+  $('#submit-consumption').click(function(){
+    $(this).attr("disabled", "disabled");
+    $('#consumption-form').submit();
+  });
 });

@@ -4,13 +4,13 @@
       <span><%= @cliente.nome %></span>, seu saldo é de <span id="saldo-f"><%= number_to_currency(@cliente.saldo) %></span>.
     </span>
     <%= link_to 'Cancelar', consumo_path, 'data-icon' => 'arrow-l', 'role' => 'button', 'class' => 'btn'%>
-    <button class="btn btn-primary" onclick="document.Confirmar.submit();">Enviar</button>
+    <button class="btn btn-primary" id="submit-consumption">Enviar</button>
     <span id="total-compra">Total: R$0,00</span>
     <%= render partial: 'consumo/botoes_de_recarga' %>
   </div>
 </div>
 
-<%= form_tag(confirma_consumo_path(@cliente), :id => 'Confirmar', :name => 'Confirmar') do %>
+<%= form_tag(confirma_consumo_path(@cliente), :id => 'consumption-form') do %>
   <div class="row-fluid" style="margin-top: 100px;">
     <% @produtos_cols.each do |prods| %>
       <div class="span6">
