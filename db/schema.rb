@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140902010440) do
+ActiveRecord::Schema.define(:version => 20140914210424) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -32,17 +32,19 @@ ActiveRecord::Schema.define(:version => 20140902010440) do
     t.string   "nome"
     t.string   "email"
     t.float    "saldo",      :default => 0.0
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "clientes", ["email"], :name => "index_clientes_on_email", :unique => true
 
   create_table "consumos", :force => true do |t|
     t.date     "data"
     t.integer  "cliente_id"
     t.integer  "quantidade"
     t.integer  "produto_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contribuicaos", :force => true do |t|
@@ -73,8 +75,8 @@ ActiveRecord::Schema.define(:version => 20140902010440) do
 
   create_table "grupos", :force => true do |t|
     t.string   "nome"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "movimentacoes", :force => true do |t|
@@ -82,15 +84,15 @@ ActiveRecord::Schema.define(:version => 20140902010440) do
     t.integer  "grupo_id"
     t.float    "valor"
     t.date     "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "produtos", :force => true do |t|
     t.string   "nome"
     t.float    "preco"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "ordem"
   end
 
