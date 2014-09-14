@@ -10,7 +10,9 @@ ActiveAdmin.register Cliente do
     column :email
     column :saldo
     column :created_at
-    actions
+    actions do |cliente|
+      link_to "Histórico", detalhes_historico_path(cliente), :class => "member_link", target: "_blank"
+    end
   end
 
   form do |f|
