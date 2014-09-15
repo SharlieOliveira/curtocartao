@@ -24,4 +24,4 @@ A lot of people help Curto Café to keep going awesome, and of course not just w
 ### Powered by :heart:
 
 [curtocafe]: http://facebook.com.br/curtocafe
-[issues]: https://github.com/Helabs/pah/issues
+[issues]: https://github.com/curtocafe/curtocartao/issues
