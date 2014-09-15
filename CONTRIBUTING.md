@@ -1,0 +1,33 @@
+# Contributing
+
+We love pull requests. Here's a quick guide:
+
+1. Fork the repo.
+
+1. Create your feature branch (`git checkout -b my-new-feature`)
+
+1. Run the tests. We only take pull requests with passing tests, and it's great
+to know that you have a clean slate: `bundle && rake`
+
+1. Add a test for your change. Only refactoring and documentation changes
+require no new tests. If you are adding functionality or fixing a bug, we need
+a test!
+
+1. Make the test pass.
+
+1. Commit your changes (`git commit -am 'Added some feature'`)
+
+1. Push to the branch (`git push origin my-new-feature`)
+
+1. Create new Pull Request
+
+At this point you're waiting on us. We like to at least give you feedback, if not just
+accept it, within a few days, depending on our internal priorities.
+
+We are working to improve our code base. Some things that will increase the chance that your pull request is accepted is to follow the practices described on [Ruby style guide](https://github.com/bbatsov/ruby-style-guide), [Rails style guide](https://github.com/bbatsov/rails-style-guide) and [Better Specs](http://betterspecs.org/).
+
+## General rules
+
+- Small features and versions upgrades should be done only via PR (without opening an issue before)
+- Larger features or changes should be discussed on issues before opening a PR.
+- Every PR of new features/gems should come with the specs/feature of the change
