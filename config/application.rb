@@ -11,7 +11,6 @@ end
 
 module Curtocartao
   class Application < Rails::Application
-    # Do not generate specs for views and requests. Also, do not generate assets.
     config.generators do |g|
       g.helper false
       g.view_specs false
