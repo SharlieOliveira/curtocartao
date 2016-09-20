@@ -1,6 +1,6 @@
 class DropUnusedTableUsuarios < ActiveRecord::Migration
   def up
-    drop_table :usuarios
+    #drop_table :usuarios
   end
 
   def down
